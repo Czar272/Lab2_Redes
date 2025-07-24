@@ -4,6 +4,8 @@
 
 #### Cesar Lopez # 22535
 
+#### **_Reporte_**: [Link al reporte](https://uvggt-my.sharepoint.com/:w:/r/personal/lop22535_uvg_edu_gt/Documents/Lab2.1%20-%20Esquemas%20de%20deteccio%CC%81n%20y%20correccio%CC%81n%20de%20errores.docx?d=w8e60467a9aa54320acfac1c27e24475e&csf=1&web=1&e=NWTpG2)
+
 # Algoritmos de Corrección de errores
 
 ## Emisor Viterbi (Codificador convolucional tipo (2,1,3))
