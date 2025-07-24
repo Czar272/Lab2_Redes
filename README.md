@@ -25,25 +25,25 @@
 1. Entrada: 1
 
    - Registros: [1,0,0]
-   - G1 = 1⊕0⊕0 = 1
-   - G2 = 1⊕0 = 1 → salida: 11
+   - G1 = 1-0-0 = 1
+   - G2 = 1-0 = 1 → salida: 11
 
 2. Entrada: 0
 
    - Registros: [0,1,0]
-   - G1 = 0⊕1⊕0 = 1
-   - G2 = 0⊕0 = 0 → salida: 10
+   - G1 = 0-1-0 = 1
+   - G2 = 0-0 = 0 → salida: 10
 
 3. Entrada: 1
 
    - Registros: [1,0,1]
-   - G1 = 1⊕0⊕1 = 0
-   - G2 = 1⊕1 = 0 → salida: 00
+   - G1 = 1-0-1 = 0
+   - G2 = 1-1 = 0 → salida: 00
 
 4. Entrada: 1
    - Registros: [1,1,0]
-   - G1 = 1⊕1⊕0 = 0
-   - G2 = 1⊕0 = 1 → salida: 01
+   - G1 = 1-1-0 = 0
+   - G2 = 1-0 = 1 → salida: 01
 
 ```
 Entrada original: 1011
