@@ -2,12 +2,24 @@ def hamming_distance(a: str, b: str) -> int:
     return sum(x != y for x, y in zip(a, b))
 
 # Tabla de transiciones: (current_state, input_bit) → (next_state, output_bits)
-transitions = {
-    '00': {'0': ('00', '00'), '1': ('10', '11')},
-    '01': {'0': ('00', '10'), '1': ('10', '01')},
-    '10': {'0': ('01', '11'), '1': ('11', '00')},
-    '11': {'0': ('01', '01'), '1': ('11', '10')}
-}
+def generate_transitions():
+    transitions = {}
+    for reg1 in [0, 1]:
+        for reg2 in [0, 1]:
+            state = f"{reg1}{reg2}"
+            transitions[state] = {}
+            for input_bit in [0, 1]:
+                reg = [input_bit, reg1, reg2]
+                out1 = reg[0] ^ reg[1] ^ reg[2]  # G1 = 111
+                out2 = reg[0] ^ reg[2]          # G2 = 101
+                next_state = f"{reg[0]}{reg[1]}"
+                output_bits = f"{out1}{out2}"
+                transitions[state][str(input_bit)] = (next_state, output_bits)
+    return transitions
+
+transitions = generate_transitions()
+
+
 
 def viterbi_decode(encoded_bits: str) -> str:
     # Inicializar caminos: {estado: (cost, path)}
