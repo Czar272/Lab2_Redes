@@ -76,3 +76,67 @@ Salida codificada: 11100001
 Entrada (salida del emisor):  11110001 <- un bit cambiado
 Salida: 1011
 ```
+
+# Algoritmos de Deteccion de errores
+
+## Emisor Fletcher-Checksum (Fletcher-16 sobre bloques de 8 bits)
+
+### Descripcion
+
+- Toma una trama de bits y la divide en bytes (bloques de 8 bits).
+
+- Calcula dos valores de suma:
+
+  - s1: suma acumulativa de los bytes
+
+  - s2: suma acumulativa de los s1
+
+- Ambas sumas se hacen módulo 255.
+
+- El resultado (s1 y s2) se codifica como 16 bits adicionales que se agregan al final de la trama.
+
+### Ejemplo 10110011:
+
+1. Entrada: 10110011
+
+   - Byte: 179
+   - s1 = 179
+   - s2 = 179
+
+2. Checksum generado:
+
+   - s1 = 179 → 10110011
+
+   - s2 = 179 → 10110011
+
+```
+Trama original: 10110011
+Trama con checksum: 101100111011001110110011
+```
+
+## Receptor Fletcher-Checksum (Verificación con s1 y s2)
+
+### Descripcion
+
+- Extrae los últimos 16 bits como s1 y s2 recibidos.
+
+- Vuelve a calcular s1 y s2 con los bits de datos recibidos (excluyendo el checksum).
+
+- Si ambos valores coinciden exactamente, la trama se acepta como válida.
+
+- Si hay una diferencia, se detecta un error y la trama se descarta.
+
+### Funcionamiento
+
+- Verifica si los valores de suma acumulada (s1, s2) coinciden con los esperados.
+
+- Si se cambia 1 bit, normalmente s1 o s2 no coinciden → se detecta el error.
+
+- Sin embargo, si se cambian múltiples bits con un efecto "balanceado", puede que el error no se detecte.
+
+```
+Trama recibida (válida):     101100111011001110110011
+Trama recibida (con error):  101100111111001110110011
+Resultado: Error detectado
+
+```
